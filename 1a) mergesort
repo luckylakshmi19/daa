@@ -1,0 +1,93 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+struct mlist
+{
+        int val;
+        struct mlist *next;
+};
+typedef struct mlist node;
+node *create()
+{
+        node *first=NULL;
+        node *new,*prev;
+        int x;
+        printf("enter the data in ascending order,enter -1 to stop");
+        scanf("%d",&x);
+       while(x!=-1)
+{
+        new=(node*)malloc(sizeof(node*));
+        new->val=x;
+        new->next=NULL;
+        if(first==NULL)
+        {
+                first=new;
+                prev=new;
+        }
+        else
+        {
+                prev->next=new;
+                prev=new;
+        }
+        printf("enter the data in ascending order,enter -1 to stop");
+        scanf("%d",&x);
+}
+return first;
+}
+node *mergesort(node *l1,node *l2)
+{
+        node *l3=NULL;
+        node *sorted;
+        if(l1==NULL)
+                return l2;
+        if(l2==NULL)
+                return l1;
+        if(l1 && l2)
+        {
+                if(l1->val<=l2->val)
+                {
+                        sorted=l1;
+                        l1=sorted->next;
+                }
+                else
+                {
+                        sorted=l2;
+                        l2=sorted->next;
+                }
+                l3=sorted;
+        }
+        while(l1 && l2)
+        {
+                if(l1->val<=l2->val)
+                {
+                        sorted->next=l1;
+                        sorted=l1;
+                        l1=sorted->next;
+                }
+                else
+                {
+                        sorted->next=l2;
+                        sorted=l2;
+                        l2=sorted->next;
+                }
+        }
+        if(l1==NULL)
+                sorted->next=l2;
+                if(l2==NULL)
+                        sorted->next=l1;
+                return l3;
+                }
+        }
+}
+int main()
+{
+        node *l1,*l2,*l3;
+        printf("enter l1\n");
+        l1=create();
+
+        printf("enter l2\n");
+        l2=create();
+        l3=mergesort(l1,l2);
+        printf("merged list\n");
+        display(l3);
+}
