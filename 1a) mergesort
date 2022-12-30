@@ -91,3 +91,18 @@ int main()
         printf("merged list\n");
         display(l3);
 }
+
+
+output:-
+enter l1
+enter the data in ascending order,enter -1 to stop1
+enter the data in ascending order,enter -1 to stop2
+enter the data in ascending order,enter -1 to stop4
+enter the data in ascending order,enter -1 to stop-1
+enter l2
+enter the data in ascending order,enter -1 to stop1
+enter the data in ascending order,enter -1 to stop3
+enter the data in ascending order,enter -1 to stop4
+enter the data in ascending order,enter -1 to stop-1
+merged list
+1->1->2->3->4->4->
